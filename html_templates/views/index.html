@@ -1,0 +1,22 @@
+<!-- views/pages/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'head.html' %}
+</head>
+
+<body>
+    <header>
+        {% include 'header.html' %}
+    </header>
+    <div class="main-box">
+        <div class="data-container">
+            {% include 'data_display.html' with dataFormatNode=dataFormatNode %}
+            {% include 'right_panel.html' with dataFormatNode=dataFormatNode range=range %}
+        </div>
+        <footer> {% include 'footer.html' %} </footer>
+    </div>
+    {% include 'scripts.html' %}
+</body>
+</html>

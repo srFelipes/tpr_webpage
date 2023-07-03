@@ -1,0 +1,8 @@
+django==2.0.5
+mysqlclient==1.3.12
+numpy
+scipy
+boto3==1.9.71
+PyMySQL==0.9.3
+django-storages==1.7.1
+tzlocal==2.0.0

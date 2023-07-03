@@ -1,0 +1,96 @@
+{% load custom_filters %}
+<div class="col-xs-12 col-lg-4 right-panel">
+    <div class="row data-selection" align="middle">
+        <div class="col-xs-4 col-xs-offset-1 panel-box">
+            <p>Selected Map:</p>
+            <select class="selected_map">
+                {% for data in dataFormatNode %}
+                    <option value={{data|split_node}}>{{data|split_node}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-xs-5 col-xs-offset-1 panel-box">
+            <div class="row">
+                <div class="col-xs-12" align="left">
+                    <label class="switch">
+                        <div class="col-xs-7" align="left">
+                            <span>Map</span>
+                        </div>
+                        <div class="col-xs-5" align="left">
+                            <input type="radio" name="nav_data" class="nav_data" value="googlemap" checked>
+                        </div>
+                        <div class="col-xs-7" align="left">
+                            <span>Heat</span>
+                        </div>
+                        <div class="col-xs-5" align="left">
+                            <input type="radio" name="nav_data" class="nav_data" value="heatmap">
+                        </div>
+                        <div class="col-xs-7" align="left">
+                            <span>Time</span>
+                        </div>
+                        <div class="col-xs-5" align="left">
+                            <input type="radio" name="nav_data" class="nav_data" value="timedata">
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row data-selection" align="middle">
+        <div class="col-xs-10 col-xs-offset-1 panel-box">
+            <label class="switch">
+                <div class="col-xs-10" align="left">
+                    <span>Voltage Display</span>
+                </div>
+                <div class="col-xs-2" align="left">
+                    <input type="checkbox" name="voltage_data" class="voltage_data" value="voltage_disp">
+                </div>
+            </label>
+        </div>
+    </div>
+    <div class="row data-selection" align="middle">
+        <div class="col-xs-10 col-xs-offset-1 panel-box">
+            <div class="row" style="display:flex; flex-direction: row;align-content: stretch;">
+                <div class="col-xs-4 col-xs-offset-1">
+                    <label class="date-selection">From</label>
+                    <input class="date-input" type="text" autocomplete="off" id="from" name="from">
+                </div>
+                <div class="col-xs-4 col-xs-offset-2">
+                    <label class="date-selection">To</label>
+                    <input class="date-input" type="text" autocomplete="off" id="to" name="to">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 data-table panel-box">
+            <h3>
+                <span class="glyphicon glyphicon-cloud-download"> </span>
+                Node
+                <select class="node-selection">
+                    {% for i in range %}
+                        <option value={{i}}>{{i|add:"1"}}</option>
+                    {% endfor %}
+                </select>
+            </h3>
+            <table class="table" >
+                <thead>
+                    <tr>
+                        <th class="parameter-header">Parameter</th>
+                        <th class="value-header">Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for data in dataFormatNode %}
+                        <tr>
+                            <td class="paramenter-name" id={{data|split_node}} type="button">{{data|split_node}}</td>
+                            <td id={{data}} align="right" class="value_box">0</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button id='download-button'>Download</button>
+            <p></p>
+        </div>
+    </div>
+</div>
